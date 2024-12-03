@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable @typescript-eslint/comma-dangle */
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -11,15 +12,13 @@ import { generateJwt } from "../utils/generateTokens";
 const prisma = new PrismaClient();
 //user agreed and clicked on signup with google then
 export async function googleAuthCallback(req: Request, res: Response) {
-  console.log("google auth callbacke  contrler hit");
+  console.log(req);
 
   const code = req.query.code as string;
 
   if (!code) {
     return res.status(400).send("Authorization code is missing");
   }
-
-  console.log("got the code from google to get access");
 
   try {
     const tokenResponse = await axios.post(
